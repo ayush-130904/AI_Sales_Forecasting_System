@@ -1,8 +1,9 @@
 ﻿import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy import text
+import os
 
-engine = create_engine('mysql+pymysql://root:rsayush13@localhost:3306/ecommerce_intelligence')
+engine = create_engine(os.getenv('DB_URL'))
 
 query = """
 SELECT

@@ -20,7 +20,7 @@ from sqlalchemy import create_engine
 import pickle, os
 
 #!pip install pymysql
-engine = create_engine('mysql+pymysql://root:rsayush13@localhost:3306/ecommerce_intelligence')
+engine = create_engine(os.getenv('DB_URL'))
 
 # Load the monthly feature
 df = pd.read_csv('data/monthly_features.csv', parse_dates=['month'])

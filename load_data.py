@@ -2,8 +2,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy import text
 import numpy as np
+import os
 
-engine = create_engine('mysql+pymysql://root:rsayush13@localhost:3306/ecommerce_intelligence')
+engine = create_engine(os.getenv('DB_URL'))
 
 def insert_ignore(table, conn, keys, data_iter):
     columns = ", ".join(keys)
