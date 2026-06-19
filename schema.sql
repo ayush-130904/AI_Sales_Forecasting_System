@@ -70,3 +70,6 @@ TRUNCATE customers;
 TRUNCATE products;
 
 SET FOREIGN_KEY_CHECKS = 1;
+DESCRIBE predictions;
+ALTER TABLE predictions
+RENAME COLUMN acutal_revenue TO actual_revenue;

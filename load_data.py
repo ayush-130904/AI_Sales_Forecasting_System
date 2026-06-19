@@ -2,7 +2,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy import text
 import numpy as np
+from dotenv import load_dotenv
 import os
+
+load_dotenv()  # Load environment variables from .env file
 
 engine = create_engine(os.getenv('DB_URL'))
 

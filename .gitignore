@@ -5,7 +5,9 @@ __pycache__/
 
 # Virtual environment
 venv/
+venv
 env/
+.env
 
 # Data files
 #*.csv
@@ -23,3 +25,7 @@ env/
 .DS_Store
 Thumbs.db
 .vs/
+
+.toml
+.streamlit/secrets.toml
+ca.pem

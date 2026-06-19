@@ -17,10 +17,15 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error,r2_score
 from sklearn.preprocessing import StandardScaler
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
 import pickle, os
+
+load_dotenv()
 
 #!pip install pymysql
 engine = create_engine(os.getenv('DB_URL'))
+
+print(pd.read_sql("DESCRIBE predictions", engine))
 
 # Load the monthly feature
 df = pd.read_csv('data/monthly_features.csv', parse_dates=['month'])
@@ -115,7 +120,7 @@ for month in future_months:
 all_predictions = pd.concat([results_df, future_df], ignore_index=True)
 
 # Save to MySQL predictions table
-all_predictions.to_sql('predictions', engine, if_exists='replace', index=False)
+all_predictions.to_sql('predictions', engine, if_exists='append', index=False)
 print(f"\n Saved {len(all_predictions)} rows to predictions table")
 print("   (includes 3-month future forecast with NULL actual_revenue)")
 
